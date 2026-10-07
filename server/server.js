@@ -23,10 +23,6 @@ app.get("/", (req, res) => {
     res.send("Server is running!");
 });
 
-app.listen(5000, () => {
-    console.log("Server running on port 5000");
-});
-
 app.get("/students", async (req, res) => {
     const students = await Student.find();
     
@@ -67,6 +63,11 @@ app.delete("/students/:id", async (req, res) => {
         message: "Student Deleted"
     });
 });
+
+app.listen(5000, () => {
+    console.log("Server running on port 5000");
+});
+
 
 // let students = [
 //     {

@@ -1,15 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
-
 function App() {
 
   const [students, setStudents] = useState([]);
-  const [name, setName] = useState("")
-  const [course, setCourse] = useState("")
-  const [age, setAge] = useState("")
-  const [submittedStudent, setSubmittedStudent] = useState("")
+  const [name, setName] = useState("");
+  const [course, setCourse] = useState("");
+  const [age, setAge] = useState("");
+  const [submittedStudent, setSubmittedStudent] = useState(null);
 
 
   const getStudents = () => {
@@ -32,7 +30,7 @@ function App() {
       name: name,
       course: course,
       age: age
-    }
+    };
 
     if (submittedStudent) {
       axios
@@ -78,7 +76,7 @@ function App() {
         
         <h2>Add Student</h2>
       
-        <form onSubmit={handleSubmit}>
+        <form>
           <div>
             <label>Name: </label>
             <input
