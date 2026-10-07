@@ -33,13 +33,48 @@ app.get("/students", async (req, res) => {
     res.json(students);
 });
 
-let students = [
-    {
-        id: 1,
-        name: "Juan Dela Cruz",
-        course: "BSIT",
-        age: 20
-    }
-];
+app.post("/students", async (req, res) => {
+    const newStudent = new Student ({
+        name: req.body.name,
+        course: req.body.course,
+        age: req.body.age
+    });
+
+    await newStudent.save();
+    res.json(newStudent);
+});
+
+app.put("/students/:id", async (req, res) => {
+    const updatedStudent = await Student.findByIdAndUpdate (
+        req.params.id,
+        {
+            name: req.body.name,
+            course: req.body.course,
+            age: req.body.age
+        },
+        {
+            new: true,
+        }
+    );
+
+    res.json(updatedStudent);
+});
+
+app.delete("/students/:id", async (req, res) => {
+    await Student.findByIdAndDelete(req.params.id);
+
+    res.json({
+        message: "Student Deleted"
+    });
+});
+
+// let students = [
+//     {
+//         id: 1,
+//         name: "Juan Dela Cruz",
+//         course: "BSIT",
+//         age: 20
+//     }
+// ];
 
 
