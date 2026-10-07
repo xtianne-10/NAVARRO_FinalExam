@@ -6,4 +6,6 @@ const studentSchema = new mongoose.Schema({
     age: Number
 });
 
+//try
+
 module.exports = mongoose.model("Student", studentSchema)
